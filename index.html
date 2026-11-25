@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart URL Analyzer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">🛡️</div>
+            <h2>Smart URL<br>Analyzer</h2>
+        </div>
+
+        <nav class="navigation">
+
+            <button class="nav-btn active" data-page="analyzer">
+                🔍 Analyzer
+            </button>
+
+            <button class="nav-btn" data-page="history">
+                🕒 History
+            </button>
+
+            <button class="nav-btn" data-page="about">
+                ⓘ About
+            </button>
+
+            <button class="nav-btn" data-page="tips">
+                💡 Tips
+            </button>
+
+        </nav>
+
+        <div class="sidebar-footer">
+
+            <div class="footer-shield">🛡️</div>
+
+            <div>
+                <strong>Stay Safe Online</strong>
+                <p>Check any URL before you visit.</p>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <div class="top-bar">
+            <span>🛡️ Fast</span>
+            <span>•</span>
+            <span>Simple</span>
+            <span>•</span>
+            <span>Reliable</span>
+        </div>
+
+
+        <!-- Analyzer Page -->
+        <section class="page active" id="analyzer">
+
+            <div class="heading">
+
+                <h1>
+                    <span>Smart URL</span> Analyzer
+                </h1>
+
+                <p>
+                    Check the safety, status and information of any URL
+                </p>
+
+            </div>
+
+
+            <!-- URL Input -->
+            <div class="url-box">
+
+                <span class="url-icon">🌐</span>
+
+                <input
+                    type="text"
+                    id="urlInput"
+                    placeholder="Enter website URL (e.g. https://example.com)"
+                >
+
+                <button id="analyzeBtn">
+                    Analyze
+                </button>
+
+            </div>
+
+            <p id="errorMessage"></p>
+
+
+            <!-- Results -->
+            <div class="results" id="results">
+
+                <!-- Safety Result -->
+                <div class="result-card safe-card" id="safetyCard">
+
+                    <div class="big-shield" id="shieldIcon">
+                        🛡️
+                    </div>
+
+                    <h2 id="resultTitle">Result: Ready</h2>
+
+                    <p id="resultDescription">
+                        Enter a URL to analyze its safety.
+                    </p>
+
+                </div>
+
+
+                <!-- Details -->
+                <div class="details-card">
+
+                    <div class="detail-row">
+                        <span>🌐 Domain</span>
+                        <strong id="domainResult">---</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>🔒 HTTPS</span>
+                        <strong id="httpsResult">---</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>📊 Status</span>
+                        <strong id="statusResult">Not checked</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>🔗 URL Type</span>
+                        <strong id="typeResult">---</strong>
+                    </div>
+
+                    <div class="detail-row">
+                        <span>⚠️ Risk Level</span>
+                        <strong id="riskResult">---</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Risk Score -->
+                <div class="risk-card">
+
+                    <div class="risk-circle" id="riskCircle">
+                        <span id="scoreResult">0</span>
+                    </div>
+
+                    <h2 id="riskHeading">Not Analyzed</h2>
+
+                    <p id="riskDescription">
+                        Your analysis will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Analysis Report -->
+            <div class="report-card">
+
+                <h2>Analysis Report</h2>
+
+                <div class="report-grid">
+
+                    <div class="report-item">
+                        <div class="report-icon green">🌐</div>
+                        <div>
+                            <h4>Domain</h4>
+                            <p id="reportDomain">---</p>
+                        </div>
+                    </div>
+
+                    <div class="report-item">
+                        <div class="report-icon green">🔒</div>
+                        <div>
+                            <h4>HTTPS</h4>
+                            <p id="reportHttps">---</p>
+                        </div>
+                    </div>
+
+                    <div class="report-item">
+                        <div class="report-icon blue">📊</div>
+                        <div>
+                            <h4>Status Code</h4>
+                            <p>Not checked</p>
+                        </div>
+                    </div>
+
+                    <div class="report-item">
+                        <div class="report-icon purple">🔗</div>
+                        <div>
+                            <h4>URL Type</h4>
+                            <p id="reportType">---</p>
+                        </div>
+                    </div>
+
+                    <div class="report-item">
+                        <div class="report-icon orange">🛡️</div>
+                        <div>
+                            <h4>Risk Level</h4>
+                            <p id="reportRisk">---</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Message -->
+            <div class="bottom-message" id="bottomMessage">
+
+                <div class="message-icon">✓</div>
+
+                <div>
+                    <h3 id="messageTitle">
+                        Ready to Analyze
+                    </h3>
+
+                    <p id="messageText">
+                        Enter a URL above to begin analysis.
+                    </p>
+                </div>
+
+            </div>
+
+            <p class="disclaimer">
+                This tool performs basic URL analysis only.
+                It cannot guarantee that a website is safe.
+            </p>
+
+        </section>
+
+
+        <!-- History Page -->
+        <section class="page" id="history">
+
+            <div class="heading">
+                <h1>Analysis History</h1>
+                <p>Previously analyzed URLs</p>
+            </div>
+
+            <div class="history-card">
+
+                <button id="clearHistory" class="clear-btn">
+                    Clear History
+                </button>
+
+                <div id="historyList">
+                    <p>No analysis history yet.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- About Page -->
+        <section class="page" id="about">
+
+            <div class="heading">
+                <h1>About Project</h1>
+                <p>Smart URL Analyzer</p>
+            </div>
+
+            <div class="info-card">
+
+                <h2>🛡️ Smart URL Analyzer</h2>
+
+                <p>
+                    Smart URL Analyzer is a web-based mini project
+                    designed to analyze website URLs and identify
+                    suspicious patterns.
+                </p>
+
+                <h3>Technologies Used</h3>
+
+                <ul>
+                    <li>HTML - Structure</li>
+                    <li>CSS - Design</li>
+                    <li>JavaScript - Analysis Logic</li>
+                </ul>
+
+                <h3>Purpose</h3>
+
+                <p>
+                    The purpose of this project is to help users
+                    understand URL information and recognize
+                    potentially suspicious links.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Tips Page -->
+        <section class="page" id="tips">
+
+            <div class="heading">
+                <h1>Online Safety Tips</h1>
+                <p>Stay aware before opening any link</p>
+            </div>
+
+            <div class="info-card">
+
+                <div class="tip">
+                    <h3>🔒 1. Check HTTPS</h3>
+                    <p>
+                        HTTPS encrypts the connection, but it does
+                        not guarantee that a website is trustworthy.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <h3>🔍 2. Check the Domain</h3>
+                    <p>
+                        Carefully check spelling and look for
+                        misleading domain names.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <h3>⚠️ 3. Avoid Unknown Links</h3>
+                    <p>
+                        Avoid opening links received from unknown
+                        people or suspicious messages.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <h3>🔑 4. Protect Your Password</h3>
+                    <p>
+                        Never enter your password or OTP on an
+                        unfamiliar website.
+                    </p>
+                </div>
+
+                <div class="tip">
+                    <h3>🛡️ 5. Verify Website Identity</h3>
+                    <p>
+                        Check the official website address before
+                        logging in or making payments.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
